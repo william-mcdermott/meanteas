@@ -1,0 +1,24 @@
+body {
+  padding: 5px
+}
+li {
+  padding-right: 50px;
+  padding-top: 10px
+}
+#checkout {
+  float: right;
+  background-color: red;
+  color: white
+}
+.quantity {
+  float: right;
+}
+table {
+  width: 100%
+}
+h4 {
+  margin: auto;
+}
+.photo {
+  width: 235px;
+}

@@ -1,0 +1,26 @@
+<h4>Checkout</h4>
+<table>
+  <thead>
+    <th></th>
+    <th>Quantity</th>
+    <th>Tea Ordered</th>
+    <th>Caffeine Scale</th>
+    <th>Rating</th>
+    <th>Ingredients</th>
+    <th>Price</th>
+    <th>Subtotal</th>
+  </thead>
+  <tbody ng-init="view.assignNumber(view.shoppingBag)">
+    <tr ng-repeat="order in view.shoppingBag">
+      <td><span class="glyphicon glyphicon-remove-circle" ng-click="view.removeTea(order); view.assignNumber(view.shoppingBag); view.getTotal()"></span></td>
+      <td><input ng-keyup="view.getTotal()" type="text" ng-model="order.teaQuantity"></td>
+      <td>{{order.teaName}}</td>
+      <td>{{order.caffeineScale}}</td>
+      <td>{{order.rating}}</td>
+      <td>{{order.ingredients}}</td>
+      <td>{{order.teaPrice | currency}}</td>
+      <td>{{order.teaQuantity*order.teaPrice | currency}}</td>
+    </tr>
+  </tbody>
+</table>
+<h5 ng-init="view.getTotal()">Order Total: {{view.grandTotal | currency}}</h5>

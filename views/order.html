@@ -1,0 +1,57 @@
+<label for="categorySearch">Search by category:</label>
+<select name="categorySearch" ng-model="categorySearch">
+  <option value="">Any</option>
+  <option value="awesome">Awesome</option>
+  <option value="cold">Cold</option>
+  <option value="dark">Dark</option>
+  <option value="dry">Dry</option>
+  <option value="hot">Hot</option>
+  <option value="lucid">Lucid</option>
+  <option value="spring">Spring</option>
+  <option value="summer">Summer</option>
+  <option value="warm">Warm</option>
+  <option value="winter">Winter</option>
+</select>
+<label for="nameSearch">Search by name:</label>
+<input type="text" ng-model="nameSearch" name="nameSearch">
+<a href="#/checkout"><button class="btn btn-danger" id="checkout" ng-pluralize count="view.shoppingBag.length" when="{'0': 'Checkout | Bag: Empty!', '1': 'Checkout | Bag: 1 Item', 'other': 'Checkout | Bag: {} Items'}"></button></a>
+<table>
+  <thead>
+    <th class="photo">Tea</th>
+    <th>Information</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="tea in view.teas | filter: nameSearch | filter: categorySearch">
+      <td>
+        <img ng-src={{tea.imageUrl}} alt="">
+      </td>
+      <td>
+        <h3><span>{{tea.name}}</span><span class="quantity">Quantity:
+          <select name="view.teaQuantity" ng-model="tea.teaQuantity" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <button ng-click="view.addToBag(tea)" class="btn btn-warning">Add To Bag</button></span></h3>
+        <p><strong>Price: </strong>{{tea.price/100 | currency}}</p>
+        <p><strong>Caffeine Scale: </strong>{{tea.caffeineScale}}</p>
+        <p><strong>Ingredients: </strong>{{tea.ingredients}}</p>
+        <p><strong>Rating: </strong>{{tea.rating}}</p>
+        <p><strong>In Stock? </strong>{{tea.inStock | inStock}}</p>
+        <p><strong>Categories:</strong>
+          <ul>
+            <li ng-repeat="category in tea.categories">{{category}}</li>
+          </ul>
+        </p>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
